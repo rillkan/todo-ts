@@ -16,15 +16,18 @@ export default function App() {
     setNewtodo("")
   }
 
+  function deleteTask(remove: string) {
+    setTodo(todo.filter(todo => todo !== remove))
+  }
+
   function Todolist({ alltodo }: TodolistProps) {
     return (
       <ul>
         {alltodo.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index}>{todo} <Button variant="danger" onClick={() => deleteTask(todo)}>Delete</Button></li>
         ))}
       </ul>
     )
-
   }
 
   return (
